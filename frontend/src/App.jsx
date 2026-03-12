@@ -14,7 +14,7 @@ function App() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:3000/create', {
+  axios.post('https://studioapi-2.onrender.com/create', {
       filename: newFileName,
       filedata: ""
     }).then(() => {
@@ -25,23 +25,23 @@ function App() {
   }
 
   function getFiles() {
-    axios.get("http://localhost:3000/get-all")
+    axios.get("https://studioapi-2.onrender.com/get-all")
       .then((res) => setFiles(res.data));
   }
 
   function getFileData(filename) {
     setCurrentFile(filename);
-    axios.get(`http://localhost:3000/read/${filename}`)
+    axios.get(`https://studioapi-2.onrender.com/read/${filename}`)
       .then((res) => setCurrentFileData(res.data));
   }
 
   function updateFile(filename, filedata) {
-    axios.patch(`http://localhost:3000/update/${filename}`, { filedata })
+    axios.patch(`https://studioapi-2.onrender.com/update/${filename}`, { filedata })
       .then(() => {});
   }
 
   function deleteFile(filename) {
-    axios.delete(`http://localhost:3000/delete/${filename}`)
+    axios.delete(`https://studioapi-2.onrender.com/delete/${filename}`)
       .then(() => {
         getFiles();
         if (currentFile === filename) {
